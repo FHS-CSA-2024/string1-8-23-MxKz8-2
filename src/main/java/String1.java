@@ -1,11 +1,12 @@
 package src.main.java;
-
+import java.lang.Math.*;
 public class String1
 {
     private String unimplemented = "UNIMPLEMENTED CODE";
 
     public static void main(String[] args){
         String1 s = new String1();
+        
         System.out.println(s.helloName("Bob"));
         System.out.println(s.helloName("Alice"));
         System.out.println(s.helloName("X"));
@@ -17,19 +18,79 @@ public class String1
         System.out.println();
         
         System.out.println(s.makeTags("i", "Yay"));
+        System.out.println(s.makeTags("i", "Hello"));
+        System.out.println(s.makeTags("cite", "Yay"));
+        System.out.println();
+        
         System.out.println(s.makeOutWord("<<>>", "Yay"));
+        System.out.println(s.makeOutWord("<<>>", "WooHoo"));
+        System.out.println(s.makeOutWord("[[]]", "Word"));
+        System.out.println();
+        
         System.out.println(s.extraEnd("Hello"));
+        System.out.println(s.extraEnd("ab"));
+        System.out.println(s.extraEnd("Hi"));
+        System.out.println();
+        
         System.out.println(s.firstTwo("Hello"));
+        System.out.println(s.firstTwo("abcdefg"));
+        System.out.println(s.firstTwo("ab"));
+        System.out.println();
+        
+        System.out.println(s.firstHalf("WooHoo"));
+        System.out.println(s.firstHalf("HelloThere"));
+        System.out.println(s.firstHalf("abcdef"));
+        System.out.println();
+        
         System.out.println(s.withoutEnd("Hello"));
+        System.out.println(s.withoutEnd("java"));
+        System.out.println(s.withoutEnd("coding"));
+        System.out.println();
+        
         System.out.println(s.comboString("hi", "Hello"));
+        System.out.println(s.comboString("Hello", "hi"));
+        System.out.println(s.comboString("aaa", "b"));
+        System.out.println();
+        
         System.out.println(s.middleThree("Candy"));
+        System.out.println(s.middleThree("and"));
+        System.out.println(s.middleThree("solving"));
+        System.out.println();
+        
         System.out.println(s.extraFront("Hello"));
+        System.out.println(s.extraFront("ab"));
+        System.out.println(s.extraFront("H"));
+        System.out.println();
+        
         System.out.println(s.left2("Hello"));
+        System.out.println(s.left2("java"));
+        System.out.println(s.left2("Hi"));
+        System.out.println();
+        
         System.out.println(s.hasBad("badxx"));
+        System.out.println(s.hasBad("xbadxx"));
+        System.out.println(s.hasBad("xxbadxx"));
+        System.out.println();
+        
         System.out.println(s.conCat("abc", "cat"));
+        System.out.println(s.conCat("dog", "cat"));
+        System.out.println(s.conCat("abc", ""));
+        System.out.println();
+        
         System.out.println(s.minCat("Hello", "Hi"));
+        System.out.println(s.minCat("Hello", "java"));
+        System.out.println(s.minCat("java", "Hello"));
+        System.out.println();
+        
         System.out.println(s.withoutX("xHix"));
+        System.out.println(s.withoutX("xHi"));
+        System.out.println(s.withoutX("Hxix"));
+        System.out.println();
+        
         System.out.println(s.deFront("Hello"));
+        System.out.println(s.deFront("java"));
+        System.out.println(s.deFront("away"));
+        System.out.println();
     }
 
     public String1()
@@ -72,7 +133,7 @@ public class String1
      */
     public String makeTags(String tag, String word) {
         //return unimplemented;
-        return "<" + tag + ">" + word + "<" + tag+ "/>";
+        return "<" + tag + ">" + word + "</" + tag + ">";
     }
 
     /*
@@ -86,7 +147,8 @@ public class String1
      * makeOutWord("[[]]", "word") â†’ "[[word]]"
      */
     public String makeOutWord(String out, String word) {
-        return unimplemented;
+        //return unimplemented;
+        return out.substring(0,2) + word + out.substring(2);
     }
 
     /*
@@ -97,7 +159,10 @@ public class String1
      * extraEnd("Hi") â†’ "HiHiHi"
      */
     public String extraEnd(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length() - 2;
+        String newStr = str.substring(num);
+        return newStr + newStr + newStr;
     }
 
     /*
@@ -110,7 +175,9 @@ public class String1
      * firstTwo("ab") â†’ "ab"
      */
     public String firstTwo(String str) {
-        return unimplemented;
+        //return unimplemented; 
+        String newStr = str.substring(0, 2);
+        return newStr;
     }
 
     /*
@@ -120,7 +187,11 @@ public class String1
      * firstHalf("abcdef") â†’ "abc"
      */
     public String firstHalf(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length() - 1;
+        int half = num/2;
+        String newStr = str.substring(0, half + 1);
+        return newStr;
     }
 
     /*
@@ -131,7 +202,10 @@ public class String1
      * withoutEnd("coding") â†’ "odin"
      */
     public String withoutEnd(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length() - 1;
+        String newStr = str.substring(1, num);
+        return newStr;
     }
 
     /*
@@ -143,8 +217,17 @@ public class String1
      * comboString("aaa", "b") â†’ "baaab"
      */
     public String comboString(String a, String b) {
-        return unimplemented;
-    }
+        //return unimplemented;
+        int aLength = a.length();
+        int bLength = b.length();
+        
+        if (aLength > bLength){
+            return b + a + b;
+        }else 
+            {
+            return a + b + a;
+            }
+        }
 
     /*
      * Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and". 
@@ -154,7 +237,10 @@ public class String1
      * middleThree("solving") â†’ "lvi"
      */
     public String middleThree(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length();
+        int middle = num/2;
+        return str.substring(middle - 1, middle + 2);
     }
 
     /*
@@ -165,7 +251,15 @@ public class String1
      * extraFront("H") â†’ "HHH"
      */
     public String extraFront(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length();
+        if (num > 1){
+            String newStr = str.substring(0,2);
+            return newStr + newStr + newStr;
+        }
+        else{
+            return str + str + str;
+        }
     }
 
     /*
@@ -176,7 +270,15 @@ public class String1
      * left2("Hi") â†’ "Hi"
      */
     public String left2(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length();
+        if (num > 1){
+            String newStr = str.substring(2) + str.substring(0,2);
+            return newStr;
+        }
+        else{
+            return str;
+        }
     }
 
     /*
@@ -188,7 +290,19 @@ public class String1
      * hasBad("xxbadxx") â†’ false
      */
     public boolean hasBad(String str) {
-        return false;
+        //return false;
+        String badStr = "bad";
+        String checkStr = str.substring(0,3);
+        String checkTwoStr = str.substring(1,4);
+        if (badStr.equals(checkStr)){
+            return true;
+        }
+        else if (badStr.equals(checkTwoStr)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /*
@@ -200,8 +314,21 @@ public class String1
      * conCat("abc", "") â†’ "abc"
      */
     public String conCat(String a, String b) {
-        return unimplemented;
-    }
+        //return unimplemented;
+        int numA = a.length();
+        int numB = b.length();
+        String lastChar = a.substring(numA - 1);
+        String firstChar = b.substring(0,1);
+        if (lastChar.equals(firstChar)){
+            String con = b.substring(1);
+            return a + con;
+        }
+        else{
+            return a + b;
+        }
+        }
+    
+    
 
     /*
      *Given two strings, append them together (known as "concatenation") and return the result. 
