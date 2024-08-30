@@ -91,6 +91,9 @@ public class String1
         System.out.println(s.deFront("java"));
         System.out.println(s.deFront("away"));
         System.out.println();
+        
+        System.out.println("This program was written by:");
+        System.out.print("Kyle Tan on 8.30.24");
     }
 
     public String1()
@@ -317,16 +320,23 @@ public class String1
         //return unimplemented;
         int numA = a.length();
         int numB = b.length();
-        String lastChar = a.substring(numA - 1);
-        String firstChar = b.substring(0,1);
-        if (lastChar.equals(firstChar)){
-            String con = b.substring(1);
-            return a + con;
+        if (numB > 1){
+            String lastChar = a.substring(numA - 1);
+            String firstChar = b.substring(0,1);
+                if (lastChar.equals(firstChar)){
+                    String con = b.substring(1);
+                    return a + con;
+                }
+                else{
+                    return a + b;
+                }
         }
-        else{
+        else if(numB < 1){
             return a + b;
         }
-        }
+        return a + b;
+    }
+    
     
     
 
@@ -341,7 +351,22 @@ public class String1
      *minCat("java", "Hello") â†’ "javaello"
      */
     public String minCat(String a, String b) {
-        return unimplemented;
+        //return unimplemented;
+        int numA = a.length();
+        int numB = b.length();
+        if (numA > numB){
+            int calcA = numA - numB;
+            String newA = a.substring(calcA);
+            return newA + b;
+        }
+        else if(numB > numA){
+            int calcB = numB - numA;
+            String newB = b.substring(calcB);
+            return a + newB;
+        }
+        else{
+            return a + b;
+        }
     }
 
     /*
@@ -352,7 +377,24 @@ public class String1
      * withoutX("Hxix") â†’ "Hxi"
      */
     public String withoutX(String str) {
-        return unimplemented;
+        //return unimplemented;
+        int num = str.length();
+        String firstX = str.substring(0,1);
+        String lastX = str.substring(num-1);
+        if (firstX.equals("x")){
+            if (lastX.equals("x")){
+                return str.substring(1,num - 1);
+            }
+            else{
+            return str.substring(1);
+            }
+        }
+        else if (lastX.equals("x")){
+            return str.substring(0,num-1);
+        }
+        else{
+            return str;
+        }
     }
 
     /*
@@ -365,7 +407,24 @@ public class String1
      * deFront("away") â†’ "aay"
      */
     public String deFront(String str) {    
-        return unimplemented;
+        //return unimplemented;
+        String firstChar = str.substring(0,1);
+        String secondChar = str.substring(1,2);
+        if (firstChar.equals("a")){
+            if (secondChar.equals("b")){
+                return str;
+            }
+            else{
+                return str.substring(0,1) + str.substring(2);
+            }
+        }
+        else{
+            if (secondChar.equals("b")){
+                return str.substring(1);
+            }
+            else{
+                return str.substring(2);
+            }
+        }
     }
-
 }
